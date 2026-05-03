@@ -1,0 +1,486 @@
+{
+  "info": {
+    "_postman_id": "10647e1c-a0da-4d67-ac31-1db659a24c8b",
+    "name": "Food Recipe API",
+    "description": "Food Recipe API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34384430"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "getAllUsers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{live}}/users",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"ahmad\",\r\n    \"password\":\"12121212\",\r\n    \"email\":\"ahmad11@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{live}}/users",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"ahmad11\",\r\n    \"password\":\"12121212\",\r\n    \"email\":\"ahmad11@gmail.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/users/69f4c17d2637b9ac42c07c64",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "users",
+                "69f4c17d2637b9ac42c07c64"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"ahmad\",\r\n    \"password\":\"12121212\",\r\n    \"email\":\"ahmad11@gmail.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/users/69f4c17d2637b9ac42c07c64",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "users",
+                "69f4c17d2637b9ac42c07c64"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get user by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"pepsi\",\r\n    \"description\":\"cola cola\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/users/69f4f3852637b9ac42c07c66",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "users",
+                "69f4f3852637b9ac42c07c66"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "getAllCategories",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"ahmad\",\r\n    \"password\":\"12121212\",\r\n    \"email\":\"ahmad11@gmail.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/Category",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "Category"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add Category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"pepsi\",\r\n    \"description\":\"cola cola\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{live}}/Category",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "Category"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update Category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"pepsi2\",\r\n    \"description\":\"cola cola2\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/Category/69f76c0932937960497acad1",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "Category",
+                "69f76c0932937960497acad1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"pepsi\",\r\n    \"description\":\"cola cola\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/Category/69f76c0932937960497acad1",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "Category",
+                "69f76c0932937960497acad1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get one category",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken88 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/Category/69f610583db3e77ad0c38f81",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "Category",
+                "69f610583db3e77ad0c38f81"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Recipe",
+      "item": [
+        {
+          "name": "add recipe",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken88 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{live}}/recipe",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "recipe"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update recipe",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken8888 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken88 pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/recipe/69f76f5f32937960497acad5",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "recipe",
+                "69f76f5f32937960497acad5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllRecipes",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken88 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/recipe",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "recipe"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete recipe",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken88 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/recipe/69f61365c470c561e8467b28",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "recipe",
+                "69f61365c470c561e8467b28"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get one recipe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"chicken88 pasta\",\r\n    \"userId\":\"69f4f787c972f8d22c60d5a4\",\r\n    \"categoryId\":\"69f610583db3e77ad0c38f81\",\r\n    \"description\":\"chicken pasta\",\r\n    \"image\":\"img.png\",\r\n    \"steps\":[\"cook\",\"serve\"],\r\n    \"ingredients\":[\"cheese\",\"tomato\"]\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/recipe/69f61390c470c561e8467b29",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "recipe",
+                "69f61390c470c561e8467b29"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "item": [
+        {
+          "name": "addRecipeToFav",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"69f53af803121c19f12296df\",\r\n    \"recipeId\":\"69f61390c470c561e8467b29\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{live}}/favorite",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "favorite"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllFav",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"69f53af803121c19f12296df\",\r\n    \"recipeId\":\"69f61390c470c561e8467b29\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/favorite",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "favorite"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "remove Fav",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"69f53af803121c19f12296df\",\r\n    \"recipeId\":\"69f61390c470c561e8467b29\"\r\n}"
+            },
+            "url": {
+              "raw": "{{live}}/favorite/69f64de432937960497acacd",
+              "host": [
+                "{{live}}"
+              ],
+              "path": [
+                "favorite",
+                "69f64de432937960497acacd"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
