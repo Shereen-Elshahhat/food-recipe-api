@@ -3,12 +3,12 @@ import { User } from "../../db/models/user.model.js";
 
 export const validateRecipe = async (req, res, next) => {
     try {
-        const { title, userId, categoryId, description, image } = req.body;
+        const { title, userId, categoryId, description } = req.body;
 
-        if (!title || !userId || !categoryId || !description || !image) {
+        if (!title || !userId || !categoryId || !description ) {
             return res.status(400).json({ message: "Missing required fields" });
         }
-
+       
         const category = await Category.findById(categoryId);
         if (!category) {
             return res.status(404).json({ message: "Category not found" });

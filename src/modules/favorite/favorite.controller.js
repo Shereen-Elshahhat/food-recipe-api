@@ -15,7 +15,8 @@ const addFavRecipe = async(req,res)=>{
 const getAllFavRecipe = async(req,res)=>{
     try {
         let data = await Favorite.find().populate("userId").populate("recipeId")
-        res.status(201).json({message:"get fav successfully" , data})
+        res.status(200).json({message:"get fav successfully" , data})
+  
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
@@ -27,7 +28,8 @@ const getOnefav = async(req,res) =>{
     try {
         let {id} = req.params
         let data = await Favorite.findById(id)
-        res.status(200).json({message:"success" , data})
+        if(data){return res.status(200).json({message:"success" , data})}
+        res.status(404).json({message:"fav recipe not found"})
 
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -51,7 +53,8 @@ const removeFromFav = async(req,res) =>{
     try {
         let {id} = req.params
         let data = await Favorite.findByIdAndDelete(id)
-        res.status(200).json({message:"deleted successfully" , data})
+        if(data){return res.status(200).json({message:"deleted successfully" , data})}
+        res.status(404).json({message:"fav recipe not found"})
 
     } catch (error) {
         res.status(500).json({ message: error.message })

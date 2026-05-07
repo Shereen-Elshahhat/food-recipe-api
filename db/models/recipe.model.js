@@ -22,8 +22,8 @@ const recipeSchema = new Schema({
         required:true,
     },
     image: {
-        type: String,
-        required: true
+        type: [String],
+        required: false
     },
     ingredients:[{
         type:String,

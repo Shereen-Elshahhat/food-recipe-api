@@ -6,13 +6,22 @@ import { categoryRouter } from "./src/modules/category/category.routes.js";
 import { recipeRouter } from "./src/modules/recipe/recipe.routes.js";
 import { favRecipeRouter } from "./src/modules/favorite/favorite.routes.js";
 
+
 dotenv.config()
 
-const app = express()
+const app = express() 
 const port = process.env.PORT || 3000
 app.use(express.json())
+app.use("/uploads", express.static("uploads"))
 
 dbconnect()
+
+
+// app.get("/photos" ,uploadSingleFile("image"), (req,res)=>{
+//     console.log(req.file)
+//     console.log(req.body)
+//     res.json({message:"success"})
+// })
 
 app.use("/users",userRouter)
 app.use("/category",categoryRouter)
