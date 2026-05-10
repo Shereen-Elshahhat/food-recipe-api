@@ -42,7 +42,7 @@ userSchema.index({email:1}) /////=== unique
 userSchema.set("toJSON",{
     transform:(doc,ret)=>{
         console.log(doc)
-        delete ret.password
+        // delete ret.password
         delete ret.__v 
     }
 })
