@@ -17,12 +17,13 @@ import { globalError } from "./src/middlware/globalError.js";
 
 dotenv.config()
 
+await dbconnect()
 const app = express() 
 const port = process.env.PORT || 3000
 app.use(express.json())                          // convert body from json to object to be save without it return undefing
 app.use("/uploads", express.static("uploads"))   // to show files and images on browser "in end points"
 
-dbconnect()
+
 
 
 app.use("/auth",authRouter)
@@ -32,7 +33,7 @@ app.use("/recipe",recipeRouter)
 app.use("/favorite",favRecipeRouter)
 
 app.use((req,res,next)=>{
-    next(new AppError(`404 not found page ${req.originalUrl},404`))
+    next(new AppError(`404 not found page ${req.originalUrl}`,404))
 })
 
 app.use(globalError)

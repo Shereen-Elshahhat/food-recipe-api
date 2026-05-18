@@ -12,7 +12,7 @@ export const CheckEmail = async(req,res,next)=>{
              if (isExist) {
                  return res.status(400).json({ message: "Email already exists" })
              }
-             req.body.password = await bcrypt.hash(password, 8)
+            //  req.body.password = await bcrypt.hash(password, 8)
              next()
         } catch (error) {
            next(error)

@@ -5,7 +5,7 @@ const recipeSchema = new Schema({
         type:String,
         required:true,
     },
-    userId:{
+    createdBy:{
         // type:mongoose.Types.ObjectId,
         type:Schema.Types.ObjectId,
         ref:"user",

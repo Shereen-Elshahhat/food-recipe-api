@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose"
+import  bcrypt  from 'bcrypt';
 
 const userSchema = new Schema({
     name:{
@@ -45,6 +46,10 @@ userSchema.set("toJSON",{
         // delete ret.password
         delete ret.__v 
     }
+})
+
+userSchema.pre("save",async function(){
+    this.password = await bcrypt.hash(this.password,8)
 })
 
 export const User = model("user", userSchema)

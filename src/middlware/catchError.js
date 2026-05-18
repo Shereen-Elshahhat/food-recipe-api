@@ -1,7 +1,8 @@
 export const catchError =(fun)=>{
      return(req,res,next)=>{
-       return fun(req,res,next).catch((error)=>{
-           return res.json(error)
-        })
+       return fun(req,res,next).catch((error)=>
+         next(error)
+         //   return res.json(error)
+        )
      }
 }
