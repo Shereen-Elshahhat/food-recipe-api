@@ -15,15 +15,35 @@ const register = catchError(async(req,res)=>{
 })
 
 const Login = catchError(async(req,res,next)=>{
-    const isExist = await User.findOne({email:req.body.email}).select("+password")
-    if(isExist && (await bcrypt.compare(req.body.password, isExist.password))){
-        jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECRET,(error,token)=>{
-                   return res.status(200).json({message:"success login with token"  ,token});
-        })
-    }else{ 
-    //    return res.status(404).json({message:"incorrect email or password"});
-        next(new AppError("incorrect email or password",404))
-    }
+    const user = await User.findOne({ email: req.body.email }).select("+password");
+
+  if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
+    return next(new AppError("incorrect email or password", 404));
+  }
+
+  const token = jwt.sign(
+    {
+      id: user._id,
+      name: user.name,
+      role: user.role,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "1d" }
+  );
+
+  return res.status(200).json({
+    message: "success login",
+    token,
+  });
+    // const isExist = await User.findOne({email:req.body.email}).select("+password")
+    // if(isExist && (await bcrypt.compare(req.body.password, isExist.password))){
+    //     jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECRET,(error,token)=>{
+    //                return res.status(200).json({message:"success login with token"  ,token});
+    //     })
+    // }else{ 
+    // //    return res.status(404).json({message:"incorrect email or password"});
+    //     next(new AppError("incorrect email or password",404))
+    // }
 })
 
 const ProtectedRoute = catchError(async(req,res,next)=>{
