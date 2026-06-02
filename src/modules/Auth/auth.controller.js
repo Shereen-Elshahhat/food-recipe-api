@@ -17,7 +17,7 @@ const register = catchError(async(req,res)=>{
 const Login = catchError(async(req,res,next)=>{
     const isExist = await User.findOne({email:req.body.email}).select("+password")
     if(isExist && (await bcrypt.compare(req.body.password, isExist.password))){
-        jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECERT,(error,token)=>{
+        jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECRET,(error,token)=>{
                    return res.status(200).json({message:"success login with token"  ,token});
         })
     }else{ 
@@ -30,7 +30,7 @@ const ProtectedRoute = catchError(async(req,res,next)=>{
     //check if token is exist
     let {token} = req.headers
    
-    let payload= jwt.verify(token,process.env.JWT_SECERT)
+    let payload= jwt.verify(token,process.env.JWT_SECRET)
     let user = await User.findById(payload.id)
     if(!user) return next(new AppError("User not found",404))
         req.user = user
