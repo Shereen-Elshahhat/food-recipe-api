@@ -1,6 +1,8 @@
 import { User } from "../../../db/models/user.model.js"
 import { catchError } from "../../middlware/catchError.js"
 import { AppError } from "../../utils/AppError.js"
+import { Category } from './../../../db/models/category.model.js';
+import { Recipe } from './../../../db/models/recipe.model.js';
 
 
 
@@ -53,10 +55,28 @@ const deleteUser =catchError(async(req,res)=>{
         next(new AppError("User not found",404))
 })
 
+const getDashboard = catchError(async(req,res)=>{
+    const [userCount , recipeCount, categoryCount] = await Promise.all([
+        User.countDocuments(),
+        Recipe.countDocuments(),
+        Category.countDocuments(),
+    ])
+    res.status(200).json({
+        mwssage:"success",
+        data:{
+            totalUsers:userCount,
+            totalRecipe:recipeCount,
+            totalCategories:categoryCount
+        }
+    })
+
+})
+
 export{
     addUser,
     getAllUsers,
     getOneUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getDashboard
 }

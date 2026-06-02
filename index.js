@@ -32,6 +32,8 @@ app.use("/category",categoryRouter)
 app.use("/recipe",recipeRouter)
 app.use("/favorite",favRecipeRouter)
 
+app.get('/', (req, res) => res.send('Hello World!'))
+
 app.use((req,res,next)=>{
     next(new AppError(`404 not found page ${req.originalUrl}`,404))
 })
@@ -42,5 +44,5 @@ process.on("unhandledRejection",(err)=>{
     
 })
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+export default app;

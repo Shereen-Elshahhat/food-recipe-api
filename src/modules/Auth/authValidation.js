@@ -13,3 +13,17 @@ export const loginValiditor = Joi.object({
     email:Joi.string().email().required(),
     password:Joi.string().pattern(/^[A-Z][A-Za-z0-9]{8,30}$/).required(),
 })
+
+export const forgetPassValiditor = Joi.object({
+    email:Joi.string().email().required(),
+})
+
+export const verifyOTPVal = Joi.object({
+    email:Joi.string().email().required(),
+    otp:Joi.string().length(5).required(),
+})
+
+export const resetPasswordVal = Joi.object({
+    email:Joi.string().email().required(),
+    password:Joi.string().pattern(/^[A-Z][A-Za-z0-9]{8,30}$/).required(),
+})

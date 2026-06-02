@@ -36,4 +36,8 @@ const recipeSchema = new Schema({
     
 }, {timestamps: true})
 
+recipeSchema.post("init",(doc)=>{
+    doc.image = doc.image = process.env.Base_Url + doc.image
+})
+
 export const Recipe = model("recipe", recipeSchema)

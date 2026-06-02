@@ -36,6 +36,15 @@ const userSchema = new Schema({
      type: String,
      enum: ["active", "inactive"],
      default: "active"
+   },
+   otp:{
+    type:String,
+   },
+   optExpires:Date,
+   passwordChangeAt:Date,
+   isOTPVerified:{
+     type:Boolean,
+     default:false
    }
 }, {timestamps: true})
 
@@ -49,6 +58,9 @@ userSchema.set("toJSON",{
 })
 
 userSchema.pre("save",async function(){
+      if (!this.isModified("password")) {
+        return;
+    }
     this.password = await bcrypt.hash(this.password,8)
 })
 
