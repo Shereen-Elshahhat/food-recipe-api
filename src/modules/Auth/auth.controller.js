@@ -17,7 +17,7 @@ const register = catchError(async(req,res)=>{
 const Login = catchError(async(req,res,next)=>{
     const isExist = await User.findOne({email:req.body.email}).select("+password")
     if(isExist && (await bcrypt.compare(req.body.password, isExist.password))){
-        jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECRET,(error,token)=>{
+        jwt.sign({id:isExist._id,name:isExist.name,role:isExist.role},process.env.JWT_SECRET,{ expiresIn: "7d" },(error,token)=>{
                    return res.status(200).json({message:"success login with token"  ,token});
         })
     }else{ 
@@ -88,7 +88,7 @@ const verifyOTP = catchError(async(req,res,next)=>{
     let user = await User.findOne({email})
     if(!user) return next (new AppError("user not found"))
     if(Date.now() > user.optExpires) return next (new AppError("otp is expired, please try now"))
-       let match = bcrypt.compare(otp,user.otp)
+       let match = await bcrypt.compare(otp,user.otp)
        if(!match) return next (new AppError("invalid otp code",404))
        user.isOTPVerified = true
        await user.save()

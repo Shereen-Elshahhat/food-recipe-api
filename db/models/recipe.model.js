@@ -22,7 +22,11 @@ const recipeSchema = new Schema({
         required:true,
     },
     image: {
-        type: [String],
+        type: String,
+        required: false
+    },
+    price: {
+        type: String,
         required: false
     },
     ingredients:[{

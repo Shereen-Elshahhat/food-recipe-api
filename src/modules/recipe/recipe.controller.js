@@ -25,7 +25,9 @@ const getAllRecipe =catchError( async(req,res,next) =>{
         let skip = (pageNumber -1) * limit
 
         //filteration 
-        let filter ={}
+        let filter = req.query
+        console.log(filter)
+        
         if(req.query.search){
                 filter.title = {$regex:req.query.search,$options:"i"}
         }
@@ -53,9 +55,9 @@ const getOneRecipe =catchError( async(req,res,next) =>{
 
         let {id} = req.params
         let data = await Recipe.findById(id)
-        if(data){return res.status(200).json({message:"success", data})}
+        if(!data){return next(new AppError("Recipe not found",404))}
         if (data.image) {data.image = `${req.protocol}://${req.get("host")}/uploads/recipes/${data.image}`}
-        next(new AppError("Recipe not found",404))
+        return res.status(200).json({message: "Recipe updated successfully",data});
 })
 
 ////////////////////////////////
@@ -67,9 +69,9 @@ const updateRecipe = catchError( async(req,res,next) =>{
         if(req.file){updateData.image = req.file.filename}
         
         let data = await Recipe.findByIdAndUpdate(id,updateData,{new:true})
-        if(data){return res.status(200).json({message:"updated successfully" , data})}
+        if(!data){return next(new AppError("Recipe not found",404))}
         if (data.image) {data.image = `${req.protocol}://${req.get("host")}/uploads/recipes/${data.image}`}
-        next(new AppError("Recipe not found",404))
+        return res.status(200).json({message: "Recipe updated successfully",data});
        
 })
 

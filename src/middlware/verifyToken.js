@@ -5,7 +5,7 @@ export const verifyToken = (req,res,next)=>{
    console.log("HEADERS:", req.headers);
 
      let {token}= req.headers
-     jwt.verify(token , "signInUser",async(error,decoded)=>{
+     jwt.verify(token ,process.env.JWT_SECRET,async(error,decoded)=>{
      if(error){
         next(new AppError(error.message,401))
      }else{

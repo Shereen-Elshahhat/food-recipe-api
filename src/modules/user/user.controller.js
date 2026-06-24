@@ -36,6 +36,9 @@ const getOneUser =catchError( async (req, res, next) => {
 
 /////////////////////////////////////////////////////
 const updateUser = catchError(async(req,res,next)=>{
+    if ( req.user.role !== "admin" && req.user.id !== req.params.id){
+         return next(new AppError("Forbidden", 403));
+    }
 
         let {id} = req.params
         let data = await User.findByIdAndUpdate(id,req.body,{new:true})
@@ -47,7 +50,7 @@ const updateUser = catchError(async(req,res,next)=>{
 })
 
 ///////////////////////////
-const deleteUser =catchError(async(req,res)=>{
+const deleteUser =catchError(async(req,res,next)=>{
 
         let {id} = req.params
         let data = await User.findByIdAndDelete(id)
