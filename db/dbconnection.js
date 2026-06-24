@@ -17,7 +17,6 @@ export const dbconnect = async()=>{
 
 const seedAdmin = catchError(async(req,res,next)=>{
     let admin = await User.findOne({role:"admin"})
-    process.env.name = "shereen"
 
     if(!admin){
         await User.create({
