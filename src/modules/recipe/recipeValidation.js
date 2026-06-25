@@ -16,7 +16,7 @@ export const addRecipeValiditor = Joi.object({
         minetype:Joi.string().valid("image/jpeg","image/png"),
         destination:Joi.string(),
         size:Joi.number().max(900000000000000),
-    }).required(),
+    }),
 })
 
 export const updateRecipeValiditor = Joi.object({
